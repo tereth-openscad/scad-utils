@@ -1,4 +1,6 @@
 use <se3.scad>
+use <linalg.scad>
+use <lists.scad>
 
 // xyz = euler angles = rz * ry * rx
 // axis = rotation_axis * rotation_angle
@@ -25,3 +27,9 @@ function translation(v) = [
 	[0,0,1,v[2]],
 	[0,0,0,1],
 ];
+
+// Convert between cartesian and homogenous coordinates
+function project(x) = subarray(x,end=len(x)-1) / x[len(x)-1];
+
+function transform(m, list) = [for (p=list) project(m * vec4(p))];
+function to_3d(list) = [ for(v = list) vec3(v) ];
