@@ -28,10 +28,10 @@ function reverse(list) = [for (i = [len(list)-1:-1:0]) list[i]];
 
   subarray([1,2,3,4], 1, 2) => [2,3]
 */
-function subarray(arr,begin=0,end=-1) = [
-    let(end = end < 0 ? len(arr) : end)
+function subarray(list,begin=0,end=-1) = [
+    let(end = end < 0 ? len(list) : end)
       for (i = [begin : 1 : end-1])
-        arr[i]
+        list[i]
 ];
 
 /*!
@@ -39,4 +39,4 @@ function subarray(arr,begin=0,end=-1) = [
 
   set([1,2,3,4], 2, 5) => [1,2,5,4]
 */
-function set(list, i, x) = [for (i_=[0:len(arr)-1]) i == i_ ? x : arr[i_]];
+function set(list, i, x) = [for (i_=[0:len(list)-1]) i == i_ ? x : list[i_]];
