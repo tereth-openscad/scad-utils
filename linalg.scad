@@ -6,13 +6,15 @@
 
 function vec3(p) = len(p) < 3 ? concat(p,0) : p;
 function vec4(p) = let (v3=vec3(p)) len(v3) < 4 ? concat(v3,1) : v3;
+function unit(v) = v/norm(v);
+
+function identity3()=[[1,0,0],[0,1,0],[0,0,1]]; 
+function identity4()=[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]];
+
 
 function take3(v) = [v[0],v[1],v[2]];
 function tail3(v) = [v[3],v[4],v[5]];
-function identity3()=[[1,0,0],[0,1,0],[0,0,1]]; 
-function identity4()=[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]];
 function rotation_part(m) = [take3(m[0]),take3(m[1]),take3(m[2])];
-function unit(v) = v/norm(v);
 function rot_trace(m) = m[0][0] + m[1][1] + m[2][2];
 function rot_cos_angle(m) = (rot_trace(m)-1)/2;
 
