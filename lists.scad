@@ -40,3 +40,9 @@ function subarray(list,begin=0,end=-1) = [
   set([1,2,3,4], 2, 5) => [1,2,5,4]
 */
 function set(list, i, x) = [for (i_=[0:len(list)-1]) i == i_ ? x : list[i_]];
+
+/*!
+  Remove element from the list by index.
+  remove([4,3,2,1],1) => [4,2,1]
+*/
+function remove(list, i) = [for (i_=[0:1:len(list)-2]) list[i_ < i ? i_ : i_ + 1]];
