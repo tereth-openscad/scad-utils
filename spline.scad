@@ -58,7 +58,7 @@ function spline_si(i,n, p, sn) = i == n ? sn : q1inv*(spline_u(i,p)-q2*spline_si
 // I.e. if current points are p0,p1,p2 then anchor points are p0 and p2, first tangent defined by p1-p0,
 // second tangent defined by p3-p2.
 // Return array of coefficients accepted by spline(), spline_tan() and similar    
-function bezier3_args(p, symmetric_tan=false) = let(step=symmetric?2:3)
+function bezier3_args(p, symmetric=false) = let(step=symmetric?2:3)
     [for(i=[0:step:len(p)-3]) [[1,0,0,0],[-3,3,0,0],[3,-6,3,0],[-1,3,-3,1]]*
         (symmetric?[p[i],p[i]+p[i+1],p[i+2]-p[i+3],p[i+2]] : [p[i], p[i]+p[i+1], p[i+3]+p[i+2], p[i+3]])];
         
